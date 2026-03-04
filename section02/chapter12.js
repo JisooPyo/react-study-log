@@ -35,7 +35,10 @@ function freezeFood(food, callback) {
   }, 1500);
 }
 
-// 계속 인덴트가 들어간다. => 가독성이 떨어진다. => "콜백 지옥"이라고 부른다.
+// 계속 인덴트가 들어간다.
+// => 가독성이 떨어진다.
+// => "콜백 지옥"이라고 부른다.
+// => Promise로 해결할 수 있음.
 orderFood((food) => {
   console.log(food);
   cooldownFood(food, (cooldownedFood) => {
