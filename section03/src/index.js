@@ -30,3 +30,12 @@ import mul from "./math.js";
 console.log(add(1, 2)); // 3
 console.log(sub(1, 2)); // -1
 console.log(mul(2, 3)); // 6
+
+// npmjs.com -> npm 라이브러리 백화점
+// randomcolor 라이브러리 설치해보기
+// npm i randomcolor
+
+import randomColor from "randomcolor";
+
+const color = randomColor();
+console.log(color);
