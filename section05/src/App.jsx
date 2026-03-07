@@ -4,6 +4,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
+import Button from "./components/Button";
 
 // 컴포넌트 내부에 컴포넌트가 있을 경우 부모, 자식 관계로 표현된다.
 // App 컴포넌트 내부에 Header 컴포넌트가 있을 경우 App 컴포넌트는 부모 컴포넌트, Header 컴포넌트는 자식 컴포넌트라고 한다.
@@ -11,10 +12,26 @@ import Footer from "./components/Footer";
 
 // App Component
 function App() {
+  const buttonProps = {
+    text: "메일",
+    color: "red",
+    a: 1,
+    b: 2,
+    c: 3,
+  };
   return (
     <>
       <Header />
       <Main />
+      <Button {...buttonProps} />
+      <Button text={"카페"} />
+
+      {/* Button 컴포넌트에 HTML 요소, 컴포넌트 전달 */}
+      <Button text={"블로그"}>
+        <div>자식 요소</div>
+        <Header />
+      </Button>
+
       <Footer />
     </>
   );
