@@ -1,38 +1,38 @@
 import "./App.css";
-// Header.jsx 로 확장자를 쓰지 않아도 된다.
-// vite로 만든 React App 에서는 확장자를 쓰지 않아도 자동으로 파일을 찾아가도록 내부적으로 설정이 되어 있기 때문
-import Header from "./components/Header";
-import Main from "./components/Main";
-import Footer from "./components/Footer";
-import Button from "./components/Button";
-
-// 컴포넌트 내부에 컴포넌트가 있을 경우 부모, 자식 관계로 표현된다.
-// App 컴포넌트 내부에 Header 컴포넌트가 있을 경우 App 컴포넌트는 부모 컴포넌트, Header 컴포넌트는 자식 컴포넌트라고 한다.
-// App 컴포넌트는 관례상 모든 컴포넌트의 최상위 조상 컴포넌트로 설정한다. 이 때문에 Root 컴포넌트라고 하기도 한다.
-
-// App Component
+import { useState } from "react";
 function App() {
-  const buttonProps = {
-    text: "메일",
-    color: "red",
-    a: 1,
-    b: 2,
-    c: 3,
-  };
+  // count는 초기값 0, 정해주지 않으면 undefined
+  // setCount: 상태 변화 함수(count의 값을 변경)
+  const [count, setCount] = useState(0);
+
+  /**
+   * let light = "OFF"로 하지 않는 이유
+   * 리액트에서는 state가 변화해야 리렌더링이 되는데, let light가 바뀌었다고 리렌더링이 되지 않는다.
+   * 가변적인 값을 화면에 렌더링 시켜주고 싶다면 state를 이용해서 처리해야 한다.
+   */
+  const [light, setLight] = useState("OFF");
+
   return (
     <>
-      <Header />
-      <Main />
-      <Button {...buttonProps} />
-      <Button text={"카페"} />
-
-      {/* Button 컴포넌트에 HTML 요소, 컴포넌트 전달 */}
-      <Button text={"블로그"}>
-        <div>자식 요소</div>
-        <Header />
-      </Button>
-
-      <Footer />
+      <div>
+        <h1>{light}</h1>
+        <button
+          onClick={() => {
+            setLight(light === "ON" ? "OFF" : "ON");
+          }}
+        >
+          {light === "ON" ? "끄기" : "켜기"}
+        </button>
+      </div>
+      <h1>{count}</h1>
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        +
+      </button>
+      {count >= 5 && <h2>count는 5이상입니다.</h2>}
     </>
   );
 }
