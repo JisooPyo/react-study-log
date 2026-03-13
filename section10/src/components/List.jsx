@@ -24,7 +24,7 @@ const List = ({ todos, onUpdate, onDelete }) => {
 
   // 두 번째 인수: 의존성배열, deps
   const { totalCount, doneCount, notDoneCount } = useMemo(() => {
-    console.log("getAnalyzedData 호출");
+    // console.log("getAnalyzedData 호출");
     const totalCount = todos.length;
     const doneCount = todos.filter((todo) => todo.isDone).length;
     const notDoneCount = totalCount - doneCount;
